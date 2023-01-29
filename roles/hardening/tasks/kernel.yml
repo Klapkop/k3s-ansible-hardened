@@ -20,9 +20,3 @@
     name: fs.protected_fifos
     value: 2
     state: present
-
-- name: Restrict module loading once this sysctl value is loaded
-  ansible.posix.sysctl:
-    name: kernel.modules_disabled
-    value: 1
-    state: present
