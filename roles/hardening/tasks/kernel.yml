@@ -1,0 +1,28 @@
+---
+- name: Restrict loading TTY line disciplines
+  ansible.posix.sysctl:
+    name: dev.tty.ldisc_autoload
+    value: 0
+    state: present
+
+- name: Restrict unprivileged access to the perf_event_open() system call
+  ansible.posix.sysctl:
+    name: kernel.perf_event_paranoid
+    value: 3
+
+- name: Hardened BPF JIT compilation
+  ansible.posix.sysctl:
+    name: net.core.bpf_jit_harden
+    value: 2
+
+- name: Restrict FIFO special device creation behavior
+  ansible.posix.sysctl:
+    name: fs.protected_fifos
+    value: 2
+    state: present
+
+- name: Restrict module loading once this sysctl value is loaded
+  ansible.posix.sysctl:
+    name: kernel.modules_disabled
+    value: 1
+    state: present
