@@ -14,9 +14,3 @@
   ansible.posix.sysctl:
     name: net.core.bpf_jit_harden
     value: 2
-
-- name: Restrict FIFO special device creation behavior
-  ansible.posix.sysctl:
-    name: fs.protected_fifos
-    value: 2
-    state: present
