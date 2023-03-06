@@ -37,6 +37,12 @@
     from_ip: "{{ hostvars[item]['ansible_eth0']['ipv4']['address'] }}"
   loop: "{{ groups['node'] }}"
 
+- name: Allow access to metrics endpoint
+  community.general.ufw:
+    rule: allow
+    port: 10250
+    proto: tcp
+
 - name: Enable UFW firewall
   community.general.ufw:
     state: enabled
